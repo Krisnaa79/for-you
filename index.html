@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Untukmu 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(135deg,#0f172a,#312e81,#7c3aed);
+
+overflow:hidden;
+
+color:white;
+
+}
+
+.card{
+
+width:90%;
+max-width:420px;
+
+padding:30px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(12px);
+
+text-align:center;
+
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+animation:fade .8s;
+
+}
+
+h1{
+
+font-size:28px;
+
+margin-bottom:15px;
+
+}
+
+p{
+
+line-height:1.8;
+
+font-size:17px;
+
+margin:15px 0;
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:15px 28px;
+
+border:none;
+
+border-radius:50px;
+
+background:white;
+
+color:#312e81;
+
+font-weight:bold;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+#message{
+
+display:none;
+
+animation:fade 1s;
+
+}
+
+#typing{
+
+min-height:260px;
+
+white-space:pre-line;
+
+}
+
+.footer{
+
+margin-top:30px;
+
+font-size:15px;
+
+opacity:.8;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:twinkle 4s infinite;
+
+}
+
+@keyframes twinkle{
+
+50%{
+
+opacity:.2;
+
+transform:scale(.3);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div id="welcome">
+
+<h1>Haiii 😊</h1>
+
+<p>
+
+Terima kasih sudah meluangkan waktu
+
+untuk scan QR ini.
+
+</p>
+
+<p>
+
+Tenang ya...
+
+Website ini cuma berisi pesan kecil.
+
+Tidak ada iklan.
+
+Tidak ada login.
+
+Tidak ada permintaan data apa pun.
+
+</p>
+
+<button onclick="start()">Buka Pesan 💛</button>
+
+</div>
+
+<div id="message">
+
+<div id="typing"></div>
+
+<div class="footer">
+
+🌸
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+for(let i=0;i<80;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.animationDelay=Math.random()*4+"s";
+
+document.body.appendChild(s);
+
+}
+
+const lines=[
+
+"Haiii... katanya hari yang melelahkan perlu sedikit energi tambahan. 😊",
+
+"",
+
+"Jadi... aku titip tiga snack kecil ini buat nemenin harimu. 🍫🥛🥢",
+
+"",
+
+"Semogaa kamu sukaa,",
+
+"dan semogaaa harimu berjalan lebih ringan dan lancarrr.",
+
+"",
+
+"Ohhh iyaaa...",
+
+"makasiii pulsanyaa pagi tadii ☺️",
+
+"",
+
+"Semoga hari ini menyenangkan yaa 🌸",
+
+"",
+
+"- Krisna -"
+
+];
+
+function sleep(ms){
+
+return new Promise(r=>setTimeout(r,ms));
+
+}
+
+async function start(){
+
+document.getElementById("welcome").style.display="none";
+
+document.getElementById("message").style.display="block";
+
+let box=document.getElementById("typing");
+
+for(let text of lines){
+
+let p=document.createElement("p");
+
+box.appendChild(p);
+
+for(let c of text){
+
+p.innerHTML+=c;
+
+await sleep(40);
+
+}
+
+await sleep(700);
+
+}
+
+confetti();
+
+}
+
+function confetti(){
+
+for(let i=0;i<80;i++){
+
+let c=document.createElement("div");
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-20px";
+
+c.style.width="8px";
+
+c.style.height="8px";
+
+c.style.background="hsl("+Math.random()*360+",100%,70%)";
+
+c.style.borderRadius="50%";
+
+c.style.transition="4s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+
+c.style.transform="translateY(110vh) rotate(720deg)";
+
+},10);
+
+setTimeout(()=>{
+
+c.remove();
+
+},4200);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
