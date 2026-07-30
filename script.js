@@ -1,43 +1,20 @@
-// ================================
-// ENVELOPE OPEN ANIMATION
-// ================================
+document.addEventListener("DOMContentLoaded", () => {
 
-const envelope = document.getElementById("envelope");
+    const envelope = document.getElementById("envelope");
+    const tapText = document.querySelector(".tap-text");
 
-let opened = false;
+    let opened = false;
 
-envelope.addEventListener("click", () => {
+    envelope.addEventListener("click", () => {
 
-    if (opened) return;
+        if(opened) return;
 
-    opened = true;
+        opened = true;
 
-    envelope.classList.add("open");
+        envelope.classList.add("open");
 
-});
+        tapText.innerHTML="💛 Semoga harimu menyenangkan";
 
-
-// ================================
-// OPTIONAL EFFECT
-// Mengubah tulisan setelah amplop dibuka
-// ================================
-
-const tapText = document.querySelector(".tap-text");
-
-envelope.addEventListener("click", () => {
-
-    tapText.innerHTML = "💛 Semoga harimu menyenangkan";
-
-});
-
-
-// ================================
-// OPTIONAL EFFECT
-// Disable hover setelah dibuka
-// ================================
-
-envelope.addEventListener("transitionend", () => {
-
-    envelope.style.cursor = "default";
+    });
 
 });
