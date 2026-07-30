@@ -1,1 +1,1 @@
-
+const lines=['Katanya hari yang melelahkan perlu sedikit energi tambahan.','Jadi... aku titip tiga snack kecil ini buat nemenin harimu. 🍫🥛🥢','Semogaa kamu sukaa, dan semogaaa harimu berjalan lebih ringan dan lancarrr.','Ohhh iyaaa... makasiii pulsanyaa pagi tadii ☺️','- Krisna -'];env.onclick=()=>{start.style.display='none';msg.classList.remove('hide');const t=document.getElementById('typing');lines.forEach((l,i)=>{let p=document.createElement('p');p.className='line';p.textContent=l;t.appendChild(p);setTimeout(()=>p.classList.add('show'),700*i);});};
