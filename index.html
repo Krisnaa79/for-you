@@ -1,1 +1,439 @@
-<!DOCTYPE html><html lang='id'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Untukmu</title><link rel='stylesheet' href='style.css'></head><body><div class='bg'></div><div class='card'><div id='start'><div class='env' id='env'>💌</div><h1>Untukmu</h1><p>Sentuh amplopnya.</p></div><div id='msg' class='hide'><h1>Haiii 😊</h1><div id='typing'></div></div></div><script src='script.js'></script></body></html>
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260730-03-db92621","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,0","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHO2EIdDP0,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YADy3sAhvXQ,0","Oleo Script":"YACgEQQ14jI,0","Playfair Display":"YAFdJhem5V8,1","Poppins":"YAE5fPSY9qM,0","Press Start 2P":"YAFyGr-8pmQ,0","Source Sans 3":"YAG4lO1Mj10,0","Space Grotesk":"YAHO2sjPCSM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0"}}');</script><script src="/_sdk/a27874207e105461.telemetry_sdk.js" integrity="sha512-wgI5N9F7oA2h3vH+benMYIv4wGqTct4nKWakqgvfgRyBLmfYq8q/fi6gkfWKd2hMsyN+VQ/qOAOpxybwkcoxlA=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ucapan Mesra</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #d9687c;
+      --deep-rose: #8c4253;
+      --ink: #70434d;
+      --paper: #fffaf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    .app-shell {
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .app-shell::before,
+    .app-shell::after {
+      content: "";
+      position: absolute;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity: .58;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .app-shell::before {
+      top: -12rem;
+      left: -10rem;
+      background: #ffe0a6;
+    }
+
+    .app-shell::after {
+      right: -11rem;
+      bottom: -14rem;
+      background: #f2a8ba;
+    }
+
+    .display-font { font-family: "Fraunces", serif; }
+    .eyebrow { letter-spacing: .15em; text-transform: uppercase; }
+
+    .heart-orbit {
+      position: absolute;
+      color: #df7f92;
+      opacity: .58;
+      pointer-events: none;
+      animation: float-heart 5s ease-in-out infinite;
+    }
+
+    .heart-one { top: 18%; left: 12%; font-size: 1rem; }
+    .heart-two { top: 26%; right: 14%; font-size: 1.35rem; animation-delay: -2.4s; }
+    .heart-three { bottom: 18%; left: 19%; font-size: .85rem; animation-delay: -1.1s; }
+
+    @keyframes float-heart {
+      0%, 100% { transform: translateY(0) rotate(-6deg); }
+      50% { transform: translateY(-14px) rotate(8deg); }
+    }
+
+    .experience {
+      width: min(100%, 42rem);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .stage-intro {
+      transition: opacity .38s ease, transform .38s ease;
+    }
+
+    .envelope-button {
+      appearance: none;
+      position: relative;
+      display: block;
+      width: min(88vw, 23rem);
+      aspect-ratio: 1.45 / 1;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      filter: drop-shadow(0 22px 22px rgba(143, 69, 83, .18));
+      transition: transform .32s ease, filter .32s ease;
+    }
+
+    .envelope-button:hover {
+      transform: translateY(-5px) rotate(-1deg);
+      filter: drop-shadow(0 28px 25px rgba(143, 69, 83, .23));
+    }
+
+    .envelope-button:focus-visible,
+    .reset-button:focus-visible {
+      outline: 3px solid rgba(142, 68, 84, .5);
+      outline-offset: 6px;
+    }
+
+    .envelope-base {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 2.2rem;
+      background: #f6b8b8;
+    }
+
+    .envelope-base::before,
+    .envelope-base::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 72%;
+      height: 82%;
+      background: rgba(255, 235, 227, .78);
+      z-index: 2;
+    }
+
+    .envelope-base::before {
+      left: -16%;
+      transform: rotate(35deg);
+      transform-origin: bottom left;
+    }
+
+    .envelope-base::after {
+      right: -16%;
+      transform: rotate(-35deg);
+      transform-origin: bottom right;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 65%;
+      z-index: 5;
+      clip-path: ellipse(50% 100% at 50% 0%);
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      background: #efa4aa;
+      transition: transform .7s cubic-bezier(.2,.7,.2,1), z-index .15s linear .25s;
+      backface-visibility: hidden;
+    }
+
+    .envelope-flap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(191,83,100,.1));
+    }
+
+    .envelope-front {
+      position: absolute;
+      z-index: 4;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72%;
+      clip-path: polygon(0 0, 50% 57%, 100% 0, 100% 100%, 0 100%);
+      background: #f8c7bf;
+    }
+
+    .envelope-seal {
+      position: absolute;
+      z-index: 6;
+      top: 47%;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,.45), 0 4px 8px rgba(123,51,69,.16);
+      transition: opacity .25s ease, transform .5s ease;
+    }
+
+    .envelope-seal i { fill: currentColor; }
+
+    .envelope-hint {
+      position: absolute;
+      z-index: 7;
+      left: 50%;
+      bottom: 1rem;
+      width: 78%;
+      transform: translateX(-50%);
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .letter-wrap {
+      position: relative;
+      z-index: 1;
+      max-height: 0;
+      margin-top: -2.6rem;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(2.4rem) scale(.96);
+      transition: max-height .8s cubic-bezier(.2,.7,.2,1), opacity .35s ease .2s, transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .letter-panel {
+      position: relative;
+      margin: 0 auto;
+      width: min(100%, 34rem);
+      border: 1px solid rgba(255,255,255,.78);
+      border-radius: 2.2rem;
+      padding: 2.3rem 1.65rem 2rem;
+      box-shadow: 0 24px 60px rgba(145, 73, 87, .17);
+      backdrop-filter: blur(12px);
+    }
+
+    .letter-panel::before {
+      content: "♥";
+      position: absolute;
+      top: .65rem;
+      right: 1.15rem;
+      color: rgba(215, 101, 122, .15);
+      font-size: 4rem;
+      line-height: 1;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .letter-divider {
+      width: 4rem;
+      height: 1px;
+      margin: 1.5rem auto;
+    }
+
+    .open-only { display: none; }
+
+    .experience.is-open .envelope-button {
+      transform: translateY(2.4rem) scale(.93);
+      pointer-events: none;
+    }
+
+    .experience.is-open .envelope-flap {
+      z-index: 1;
+      transform: rotateX(178deg);
+    }
+
+    .experience.is-open .envelope-seal {
+      opacity: 0;
+      transform: translate(-50%, -68%) scale(.7);
+    }
+
+    .experience.is-open .envelope-hint {
+      opacity: 0;
+      transform: translate(-50%, .5rem);
+    }
+
+    .experience.is-open .stage-intro {
+      opacity: 0;
+      transform: translateY(-.5rem);
+      pointer-events: none;
+    }
+
+    .experience.is-open .letter-wrap {
+      max-height: 44rem;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .experience.is-open .open-only { display: inline-flex; }
+
+    .reset-button {
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .reset-button:hover { transform: translateY(-2px); filter: brightness(1.03); }
+
+    @media (max-width: 640px) {
+      .letter-panel { padding: 1.8rem 1.35rem 1.5rem; }
+      .envelope-button { width: min(90vw, 21rem); margin: 0 auto; }
+      .letter-wrap { margin-top: -2rem; }
+    }
+
+    .ornament-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ornament {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: .12;
+      filter: blur(.5px);
+      animation: drift 8s ease-in-out infinite;
+    }
+
+    .ornament.sm { font-size: 0.85rem; }
+    .ornament.md { font-size: 1.35rem; }
+    .ornament.lg { font-size: 1.85rem; }
+
+    .ornament.delay-1 { animation-delay: -1s; }
+    .ornament.delay-2 { animation-delay: -2.5s; }
+    .ornament.delay-3 { animation-delay: -4s; }
+    .ornament.delay-4 { animation-delay: -5.5s; }
+    .ornament.delay-5 { animation-delay: -7s; }
+    .ornament.delay-6 { animation-delay: -0.5s; }
+
+    .ornament.drift-up { animation: drift-up 9s ease-in-out infinite; }
+    .ornament.drift-down { animation: drift-down 10s ease-in-out infinite; }
+    .ornament.drift-side { animation: drift-side 11s ease-in-out infinite; }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(-20px) translateX(8px) rotate(8deg); }
+    }
+
+    @keyframes drift-up {
+      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(-28px) translateX(-12px) rotate(-6deg); }
+    }
+
+    @keyframes drift-down {
+      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(18px) translateX(10px) rotate(5deg); }
+    }
+
+    @keyframes drift-side {
+      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(-12px) translateX(16px) rotate(10deg); }
+    }
+
+    .flower-field {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 32rem;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .flower {
+      position: absolute;
+      opacity: .32;
+      font-size: 1.2rem;
+      animation: sway 4.5s ease-in-out infinite;
+    }
+
+    .flower.sm { font-size: 0.8rem; }
+    .flower.md { font-size: 1.2rem; }
+    .flower.lg { font-size: 1.6rem; }
+
+    .flower.delay-1 { animation-delay: -0.5s; }
+    .flower.delay-2 { animation-delay: -1s; }
+    .flower.delay-3 { animation-delay: -1.5s; }
+    .flower.delay-4 { animation-delay: -2s; }
+    .flower.delay-5 { animation-delay: -2.5s; }
+    .flower.delay-6 { animation-delay: -3s; }
+    .flower.delay-7 { animation-delay: -3.5s; }
+
+    .flower.sway-left {
+      animation: sway-left 4.5s ease-in-out infinite;
+    }
+
+    .flower.sway-right {
+      animation: sway-right 4.5s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(3px) translateY(-4px) rotate(2deg); }
+    }
+
+    @keyframes sway-left {
+      0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(-5px) translateY(-6px) rotate(-3deg); }
+    }
+
+    @keyframes sway-right {
+      0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(5px) translateY(-5px) rotate(3deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" type="text/javascript" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
+  <script src="/_sdk/6030e540d4419216.resizing_sdk.js" type="text/javascript" integrity="sha512-b5KWzyoXsbWP4smq4sftIi6Kts4YVBpBsz0BwCViwbBJkK64a3/Z6ZMdWA+qnplNcXw4mhZeqvQi3mOosiRJdA=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(255, 255, 255);">
+  <div class="app-shell">
+   <div class="ornament-layer" aria-hidden="true"><span class="ornament sm delay-1" style="top: 8%; left: 7%;">🌸</span> <span class="ornament md delay-2 drift-up" style="top: 12%; right: 11%;">🍫</span> <span class="ornament sm delay-3" style="top: 22%; left: 18%;">🎀</span> <span class="ornament lg delay-4 drift-down" style="top: 18%; right: 8%;">✨</span> <span class="ornament md delay-5 drift-side" style="top: 35%; left: 5%;">🧸</span> <span class="ornament sm delay-1" style="top: 28%; right: 15%;">💕</span> <span class="ornament md delay-2 drift-up" style="top: 45%; left: 12%;">⭐</span> <span class="ornament sm delay-3 drift-side" style="top: 52%; right: 9%;">🌹</span> <span class="ornament lg delay-4" style="top: 62%; left: 8%;">🍬</span> <span class="ornament md delay-5 drift-down" style="top: 58%; right: 11%;">🎀</span> <span class="ornament sm delay-1 drift-up" style="top: 72%; left: 14%;">✨</span> <span class="ornament md delay-2" style="top: 68%; right: 7%;">🧸</span> <span class="ornament sm delay-3 drift-side" style="top: 82%; left: 6%;">💝</span> <span class="ornament lg delay-4 drift-down" style="top: 78%; right: 13%;">🌸</span> <span class="ornament md delay-5" style="top: 88%; left: 16%;">⭐</span> <span class="ornament sm delay-1 drift-up" style="top: 92%; right: 10%;">🎀</span>
+   </div>
+   <div class="flower-field" aria-hidden="true">
+    <span class="flower sm delay-1" style="bottom: 8%; left: 3%;">🌸</span> <span class="flower md delay-2 sway-left" style="bottom: 14%; left: 8%;">🌹</span> <span class="flower lg delay-3" style="bottom: 6%; left: 13%;">🌺</span> <span class="flower md delay-4 sway-right" style="bottom: 12%; left: 18%;">🌸</span> <span class="flower sm delay-5" style="bottom: 9%; left: 23%;">🌼</span> <span class="flower md delay-6 sway-left" style="bottom: 15%; left: 28%;">🌹</span> <span class="flower lg delay-7" style="bottom: 7%; left: 33%;">🌺</span> <span class="flower sm delay-1 sway-right" style="bottom: 11%; left: 38%;">🌸</span> <span class="flower md delay-2" style="bottom: 8%; left: 43%;">🌼</span> <span class="flower lg delay-3 sway-left" style="bottom: 13%; left: 48%;">🌹</span> <span class="flower md delay-4" style="bottom: 9%; left: 53%;">🌺</span> <span class="flower sm delay-5 sway-right" style="bottom: 15%; left: 58%;">🌸</span> <span class="flower md delay-6" style="bottom: 7%; left: 63%;">🌼</span> <span class="flower lg delay-7 sway-left" style="bottom: 12%; left: 68%;">🌹</span> <span class="flower sm delay-1" style="bottom: 10%; left: 73%;">🌺</span> <span class="flower md delay-2 sway-right" style="bottom: 14%; left: 78%;">🌸</span> <span class="flower lg delay-3" style="bottom: 8%; left: 83%;">🌼</span> <span class="flower md delay-4 sway-left" style="bottom: 13%; left: 88%;">🌹</span> <span class="flower sm delay-5" style="bottom: 9%; left: 93%;">🌺</span> <span class="flower md delay-6 sway-right" style="bottom: 16%; left: 98%;">🌸</span> <span class="flower sm delay-7" style="bottom: 12%; left: 5%;">🌼</span> <span class="flower md delay-1 sway-left" style="bottom: 20%; left: 11%;">🌹</span> <span class="flower lg delay-2" style="bottom: 18%; left: 25%;">🌺</span> <span class="flower md delay-3 sway-right" style="bottom: 22%; left: 40%;">🌸</span> <span class="flower sm delay-4" style="bottom: 19%; left: 55%;">🌼</span> <span class="flower md delay-5 sway-left" style="bottom: 21%; left: 70%;">🌹</span> <span class="flower lg delay-6" style="bottom: 17%; left: 85%;">🌺</span>
+   </div><span class="heart-orbit heart-one" aria-hidden="true">♥</span> <span class="heart-orbit heart-two" aria-hidden="true">♥</span> <span class="heart-orbit heart-three" aria-hidden="true">♥</span>
+   <header class="w-full px-6 pt-7 sm:px-10 sm:pt-9">
+    <div class="mx-auto max-w-5xl text-center">
+     <p data-template-id="header-label" class="canva-text eyebrow text-xs font-bold" style="color: rgb(184, 106, 121); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">sedikit pesan dari penggemar</p>
+    </div>
+   </header>
+   <main class="relative flex w-full flex-col items-center justify-center px-5 pb-6 pt-6 sm:px-8 sm:pb-10 sm:pt-8">
+    <section class="experience text-center" id="experience" aria-labelledby="page-title" style="flex-shrink: 0;">
+     <div class="stage-intro">
+      <h1 id="page-title" data-template-id="hero-title" class="canva-text display-font mx-auto max-w-xl font-bold leading-tight" style="color: rgb(124, 63, 78); font-weight: 700; font-style: normal; font-size: 46px; line-height: 1.1;">surat kecil ini untukmu</h1>
+      <p data-template-id="intro-message" class="canva-text mx-auto mt-4 max-w-md leading-relaxed" style="color: rgb(135, 89, 101); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.65;">Untuk kamu yang selalu bikin hari jadi lebih hangat.</p>
+     </div>
+     <div class="mt-6 flex justify-center sm:mt-10">
+      <button id="envelope-button" class="envelope-button" type="button" aria-expanded="false" aria-controls="letter-wrap"> <span class="envelope-base" aria-hidden="true"></span> <span class="envelope-flap" aria-hidden="true"></span> <span class="envelope-front" aria-hidden="true"></span> <span data-template-id="envelope-seal" class="canva-tag envelope-seal" aria-hidden="true" style="background: rgb(217, 104, 124); color: rgb(255, 255, 255);"> <i data-lucide="heart" width="18" height="18"></i> </span> <span data-template-id="envelope-hint" class="canva-text envelope-hint text-xs font-bold" style="color: rgb(141, 79, 93); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.05rem;">Sentuh untuk membuka</span> </button>
+     </div>
+     <div id="letter-wrap" class="letter-wrap" aria-live="polite">
+      <article data-template-id="letter-panel" class="canva-card letter-panel" aria-labelledby="letter-heading" style="background: rgba(255, 253, 248, 0.85);">
+       <p data-template-id="letter-kicker" class="canva-text eyebrow relative text-xs font-bold" style="color: rgb(197, 104, 124); font-weight: 700; font-style: normal; font-size: 16px; letter-spacing: 0.12rem;">untukmu Favoritku</p>
+       <h2 id="letter-heading" data-template-id="letter-heading" class="canva-text display-font relative mt-4 font-bold leading-tight" style="color: rgb(133, 67, 81); font-weight: 700; font-style: normal; font-size: 30px; line-height: 1.2;">☺️☺️☺️</h2>
+       <p data-template-id="letter-body" class="canva-text relative mx-auto mt-5 max-w-md leading-8" style="color: rgb(118, 84, 93); font-weight: 400; font-style: normal; font-size: 17px; line-height: 1.75;">Haiii... katanya hari yang melelahkan perlu sedikit energi tambahan. Jadi.... aku titip tiga snack kecil ini buat nemenin harimuu. Semogaa kamu sukaa, dan semogaaa harimu berjalan lebih ringan dan lancarrr
+
+Ohhh iyaaa,, makasiii pulsanyaa pagi tadii☺️</p>
+       <div data-template-id="letter-divider" class="canva-divider letter-divider" style="background: rgb(229, 160, 169);"></div>
+       <p data-template-id="letter-signature" class="canva-text display-font relative font-semibold italic" style="color: rgb(186, 98, 116); font-weight: 600; font-style: normal; font-size: 19px;">Semoga senyummu hari ini bertambah satu lagi.</p><button id="reset-button" data-template-id="reset-button" class="canva-button reset-button open-only mt-7 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold" type="button" style="background: rgb(207, 108, 128); color: rgb(255, 
